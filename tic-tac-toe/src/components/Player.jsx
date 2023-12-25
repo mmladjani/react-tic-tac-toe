@@ -1,31 +1,30 @@
 import { useState } from 'react';
 
-function Player ({name, symbol}) {
+function Player ({name, symbol, isActive}) {
 
   const [isEditing, setIsEditing] = useState(false);
   const [playerName, setPlayerName] = useState(name);
 
-  const clickHandler = (buttonText) => {
+  let playerButtonText = 'Edit';
 
-    if(buttonText === 'Edit'){
-      setIsEditing(true);
-    }else if(buttonText === 'Save'){
-      setIsEditing(false);
-    }
+  const clickHandler = () => {
+    setIsEditing((editing) => !editing);
   }
 
-  const onChangeName = (inputValue) => {
-    setPlayerName(inputValue)
+  if(isEditing){
+    playerButtonText = 'Save';
   }
 
-  console.log(playerName);
+  const onChangeName = (event) => {
+    setPlayerName(event.target.value)
+  }
 
   return (
-      <li>
-          <span className="player">
-            {isEditing ? <input type="text" className='player-name' placeholder={playerName} onChange={(event) => onChangeName(event.target.value)}/> : <span className="player-name">{playerName}</span>}
+      <li className={isActive ? 'active' : undefined}>
+          <span>
+            {isEditing ? <input type="text" className='player-name' value={playerName} onChange={onChangeName}/> : <span className="player-name">{playerName}</span>}
             <span className="player-symbol">{symbol}</span>
-            <button onClick={(event) => clickHandler(event.target.innerText)}>{isEditing ? 'Save' : 'Edit'}</button>
+            <button onClick={clickHandler}>{playerButtonText}</button>
           </span>
         </li>
     )
