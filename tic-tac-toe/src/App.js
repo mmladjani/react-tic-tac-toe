@@ -18,7 +18,7 @@ function App() {
           <Player isActive={activePlayer === 'X'} name="Player 1" symbol="X"/>
           <Player isActive={activePlayer === 'O'} name="Player 2" symbol="O"/>
         </ol>
-        <GameBoard activePlayer={activePlayer} onSelectPlayer={changePlayer}/>
+        <GameBoard activePlayerSymbol={activePlayer} onSelectPlayer={changePlayer}/>
       </div>
     </main>
   )
