@@ -16,7 +16,7 @@ function Player ({name, symbol, isActive}) {
   }
 
   const onChangeName = (event) => {
-    setPlayerName(event.target.value)
+    setPlayerName(event.target.value);
   }
 
   return (
