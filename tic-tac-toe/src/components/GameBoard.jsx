@@ -5,7 +5,7 @@ const initialGameBoard = [
 ]
 
 const GameBoard = ({ onSelectPlayer, turns }) => {
-
+    
     let gameBoard = initialGameBoard;
     
     for (const turn of turns){
@@ -33,7 +33,7 @@ const GameBoard = ({ onSelectPlayer, turns }) => {
                     <ol>
                         {row.map((colSquare, colIndex) => 
                             <li key={colIndex}>
-                                <button onClick={() => onSelectPlayer(rowIndex, colIndex)}>{colSquare}</button>
+                                <button disabled={'disabled' ? gameBoard[rowIndex][colIndex] : ''} onClick={() => onSelectPlayer(rowIndex, colIndex)}>{colSquare}</button>
                             </li>
                         )}
                     </ol>
